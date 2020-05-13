@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Form from "../components/Form";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 class Delete extends React.Component {
 	state = {
@@ -34,21 +35,28 @@ class Delete extends React.Component {
 			method: "DELETE",
 			baseURL: "http://localhost:3000",
 			url: `/${this.props.match.params.id}`,
-			header: {
+			headers: {
 				"Content-Type": "application/json",
 			},
-		}).then(() => this.props.match.push("/"));
+		}).then(() => {
+			console.log('Entrando');
+			this.props.history.push("/");
+		})
+		.catch((error) => console.log(error))
+		.finally(() => console.log('Finalizo'));
 	};
 
+
 	render() {
+		if (this.state.loading) return <p>Loading...</p>;
 		return (
 			<Form
-				title={this.state.title}
-				description={this.state.description}
-				done={this.state.done}
+				title={this.state.task.title}
+				description={this.state.task.description}
+				done={this.state.task.done}
 				handleChange={this.handleChange}
 				handleSubmit={this.handleSubmit}
-				updating={true}
+				deleting={true}
 			/>
 		);
 	}

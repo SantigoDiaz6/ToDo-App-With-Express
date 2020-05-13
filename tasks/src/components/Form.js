@@ -7,6 +7,7 @@ function Form({
 	handleChange,
 	handleSubmit,
 	updating,
+	deleting = false,
 }) {
 	return (
 		<form onSubmit={handleSubmit}>
@@ -33,7 +34,7 @@ function Form({
 				name="done"
 				id="done"
 			/>
-			<button type="submit">{updating ? "Update" : "Create"} task</button>
+			{deleting? <button type="submit">{"Delete"} task</button> : <button type="submit">{updating ? "Update" : "Create"} task</button>}
 		</form>
 	);
 }

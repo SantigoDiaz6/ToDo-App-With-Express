@@ -33,7 +33,7 @@ app.put("/:id", (req, res) => {
 	const id = req.params.id;
 	let changeTask;
 	tasks.forEach((task, i) => {
-		if (tasks.id === id) {
+		if (task.id === id) {
 			changeTask = {
 				...task,
 				...req.body,
@@ -48,6 +48,6 @@ app.delete("/:id", (req, res) => {
 	const id = req.params.id;
 
 	tasks = tasks.filter((task) => task.id !== id);
-	res.status(200);
+	res.sendStatus(200);
 });
 app.listen(3000, () => console.log("App Listen on port 3000"));

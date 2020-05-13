@@ -24,8 +24,12 @@ class Edit extends React.Component {
 	}
 
 	handleChange = (e) => {
-		const { name, value } = e.target;
+		let checkers = ["done"];
+		let value = 
+		checkers.includes(e.target.name) ? e.target.checked : e.target.value;
+		const { name } = e.target;
 		this.setState({ [name]: value });
+		// console.log(e.target.value);
 	};
 
 	handleSubmit = (e) => {

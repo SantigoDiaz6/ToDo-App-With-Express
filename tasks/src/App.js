@@ -1,13 +1,13 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 import "./App.css";
 import Home from "./pages/Home";
 import Details from "./pages/Details";
 import Edit from "./pages/Edit";
 import Create from "./pages/Create";
 import Delete from "./pages/Delete";
-import Form from "./components/Form";
+// import Form from "./components/Form";
 
 function App() {
 	return (
@@ -21,7 +21,7 @@ function App() {
 					<Route exact path="/create" component={Create} />
 					<Route exact path="/:id" component={Details} />
 					<Route exact path="/update/:id" component={Edit} />
-					<Route exact path="/:id" component={Delete} />
+					<Route exact path="/delete/:id" component={Delete} />
 				</Switch>
 			</Router>
 		</div>
